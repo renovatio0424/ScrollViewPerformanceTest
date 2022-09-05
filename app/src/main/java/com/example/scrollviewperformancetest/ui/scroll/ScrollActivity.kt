@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.scrollviewperformancetest.PAGE_COUNT
+import com.example.scrollviewperformancetest.COUNT_LINE
 import com.example.scrollviewperformancetest.R.id
 import com.example.scrollviewperformancetest.R.layout
 import com.example.scrollviewperformancetest.data.PicsumImageInfo
@@ -28,7 +28,7 @@ class ScrollActivity : AppCompatActivity() {
         setContentView(layout.activity_scroll)
 
         lifecycle.coroutineScope.launchWhenCreated {
-            repeat(20) { idx ->
+            repeat(COUNT_LINE) { idx ->
                 // 1-base index
                 setChildView(idx + 1, presenter.getPicsumImageList(idx + 1))
             }

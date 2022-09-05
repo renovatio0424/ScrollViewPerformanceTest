@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scrollviewperformancetest.COUNT_LINE
 import com.example.scrollviewperformancetest.R
 import com.example.scrollviewperformancetest.presenter.PicsumPresenter
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +30,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launchWhenCreated {
-            repeat(20) { idx ->
+            repeat(COUNT_LINE) { idx ->
                 // 1-base index
                 imageListAdapter.addAll(presenter.getPicsumImageList(idx + 1))
             }
