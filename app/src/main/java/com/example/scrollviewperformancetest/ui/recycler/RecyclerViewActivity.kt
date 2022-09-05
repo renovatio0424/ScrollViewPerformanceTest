@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scrollviewperformancetest.R
 import com.example.scrollviewperformancetest.presenter.PicsumPresenter
-import com.faltenreich.skeletonlayout.Skeleton
-import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -16,7 +14,6 @@ import javax.inject.Inject
 class RecyclerViewActivity : AppCompatActivity() {
     @Inject
     lateinit var presenter: PicsumPresenter
-    private lateinit var skeleton: Skeleton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,23 +28,11 @@ class RecyclerViewActivity : AppCompatActivity() {
             setHasFixedSize(true)
         }
 
-        skeleton = recyclerView.applySkeleton(R.layout.layout_list_item)
-
         lifecycleScope.launchWhenCreated {
-            showLoadingView()
             repeat(10) { idx ->
                 // 1-base index
                 imageListAdapter.addAll(presenter.getPicsumImageList(idx + 1))
             }
-            dismissLoadingView()
         }
-    }
-
-    private fun showLoadingView() {
-        skeleton.showSkeleton()
-    }
-
-    private fun dismissLoadingView() {
-        skeleton.showOriginal()
     }
 }
