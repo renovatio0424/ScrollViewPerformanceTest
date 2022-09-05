@@ -29,7 +29,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launchWhenCreated {
-            repeat(10) { idx ->
+            repeat(20) { idx ->
                 // 1-base index
                 imageListAdapter.addAll(presenter.getPicsumImageList(idx + 1))
             }

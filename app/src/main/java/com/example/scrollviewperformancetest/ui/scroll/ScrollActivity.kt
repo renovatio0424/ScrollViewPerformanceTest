@@ -28,14 +28,9 @@ class ScrollActivity : AppCompatActivity() {
         setContentView(layout.activity_scroll)
 
         lifecycle.coroutineScope.launchWhenCreated {
-            val imageList = mutableListOf<PicsumImageInfo>()
-            repeat(10) { idx ->
+            repeat(20) { idx ->
                 // 1-base index
-                imageList.addAll(presenter.getPicsumImageList(idx + 1))
-            }
-
-            for ((index, chunkedImageList) in imageList.chunked(PAGE_COUNT).withIndex()) {
-                setChildView(index, chunkedImageList)
+                setChildView(idx + 1, presenter.getPicsumImageList(idx + 1))
             }
         }
     }
