@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.scrollviewperformancetest.R.drawable
 import com.example.scrollviewperformancetest.R.id
 import com.example.scrollviewperformancetest.R.layout
+import com.example.scrollviewperformancetest.SIZE_IMAGE
 import com.example.scrollviewperformancetest.data.PicsumImageInfo
 import com.example.scrollviewperformancetest.ui.SubImageListAdapter.ImageViewHolder
 
@@ -48,7 +49,7 @@ class SubImageListAdapter : ListAdapter<PicsumImageInfo, ImageViewHolder>(imageD
             textView.text = "${item.author} $position"
             Glide.with(itemView.context)
                 .load(item.downloadUrl)
-                .override(300)
+                .override(SIZE_IMAGE)
                 .placeholder(drawable.ic_launcher_background)
                 .into(imageView)
         }
